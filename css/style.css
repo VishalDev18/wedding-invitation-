@@ -1,0 +1,1322 @@
+/* ==========================================================================
+   ROYAL INDIAN WEDDING INVITATION (Groom's Edition)
+   Ashish & Shivangi | Thursday, November 26, 2026 | Lucknow
+   Multi-Theme System: Royal Emerald & Kundan Gold (Default), 
+   Sunrise Peach (Maharaja's Dream), Awadh Nawabi Wine & Sheesh Mahal Midnight
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Rozha+One&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
+
+/* ==========================================================================
+   1. COLOR PALETTES & THEME CUSTOM PROPERTIES
+   ========================================================================== */
+
+:root, [data-theme="emerald"] {
+  /* THEME 1 (DEFAULT): Royal Mewar Emerald & Kundan Gold */
+  --theme-name: "emerald";
+  --theme-primary: #0a3a28;
+  --theme-primary-deep: #052317;
+  --theme-primary-light: #13553c;
+  --theme-accent: #c48b18;
+  --theme-gold: #d4af37;
+  --theme-gold-light: #fff3ba;
+  --theme-gold-shimmer: #fff9db;
+  --theme-gold-dark: #8c5b0d;
+  --theme-gold-gradient: linear-gradient(135deg, #d4af37 0%, #fff2a8 50%, #aa771c 100%);
+  --theme-primary-gradient: linear-gradient(135deg, #0a3a28 0%, #155e42 100%);
+  --theme-countdown-grad: linear-gradient(180deg, #093322 0%, #051c13 100%);
+  --theme-box-bg: rgba(6, 32, 21, 0.78);
+  --theme-bg-page: #f8f6ee;
+  --theme-bg-parchment: #ffffff;
+  --theme-bg-cream: #f3efe4;
+  --theme-text-dark: #0e261a;
+  --theme-text-muted: #4e6357;
+  --theme-border: #dfd4bf;
+  --theme-card-border: rgba(212, 175, 55, 0.45);
+  --theme-shadow: 0 14px 40px rgba(10, 58, 40, 0.12);
+  --theme-shadow-glow: 0 0 35px rgba(212, 175, 55, 0.22);
+
+  /* Compatibility Aliases */
+  --royal-navy: var(--theme-primary);
+  --royal-navy-deep: var(--theme-primary-deep);
+  --royal-blue: var(--theme-primary-light);
+  --gold-primary: var(--theme-gold);
+  --gold-light: var(--theme-gold-light);
+  --gold-shimmer: var(--theme-gold-shimmer);
+  --gold-dark: var(--theme-gold-dark);
+  --gold-gradient: var(--theme-gold-gradient);
+  --bg-parchment: var(--theme-bg-parchment);
+  --bg-cream: var(--theme-bg-cream);
+  --bg-page: var(--theme-bg-page);
+  --text-dark: var(--theme-text-dark);
+  --text-navy: var(--theme-primary);
+  --text-muted: var(--theme-text-muted);
+  --emerald-accent: var(--theme-accent);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 50px;
+  --shadow-royal: var(--theme-shadow);
+}
+
+/* THEME 2: Invitima "Maharaja's Dream" (Sunrise Peach, Kesar & Gold) */
+[data-theme="sunrise"] {
+  --theme-name: "sunrise";
+  --theme-primary: #851c2d;
+  --theme-primary-deep: #560f1b;
+  --theme-primary-light: #a3273a;
+  --theme-accent: #d96924;
+  --theme-gold: #d4af37;
+  --theme-gold-light: #fff8d6;
+  --theme-gold-shimmer: #fffbee;
+  --theme-gold-dark: #8c5b0d;
+  --theme-gold-gradient: linear-gradient(135deg, #d4af37 0%, #ffe3a8 50%, #b87a1a 100%);
+  --theme-primary-gradient: linear-gradient(135deg, #851c2d 0%, #ad293e 100%);
+  --theme-countdown-grad: linear-gradient(180deg, #741524 0%, #460912 100%);
+  --theme-box-bg: rgba(65, 8, 16, 0.78);
+  --theme-bg-page: #fdf5ec;
+  --theme-bg-parchment: #fffdf9;
+  --theme-bg-cream: #faecdc;
+  --theme-text-dark: #270f14;
+  --theme-text-muted: #6b4c44;
+  --theme-border: #ebd3be;
+  --theme-card-border: rgba(217, 105, 36, 0.4);
+  --theme-shadow: 0 14px 40px rgba(133, 28, 45, 0.12);
+  --theme-shadow-glow: 0 0 35px rgba(217, 105, 36, 0.22);
+}
+
+/* THEME 3: Awadh Nawabi Velvet Jamuni & Rose Gold (Lucknow Royalty) */
+[data-theme="wine"] {
+  --theme-name: "wine";
+  --theme-primary: #340c42;
+  --theme-primary-deep: #1f0429;
+  --theme-primary-light: #4e1761;
+  --theme-accent: #d97d64;
+  --theme-gold: #dfb15b;
+  --theme-gold-light: #fff5d6;
+  --theme-gold-shimmer: #fff9ea;
+  --theme-gold-dark: #916616;
+  --theme-gold-gradient: linear-gradient(135deg, #dfb15b 0%, #fff1ba 50%, #af7e1d 100%);
+  --theme-primary-gradient: linear-gradient(135deg, #340c42 0%, #54176b 100%);
+  --theme-countdown-grad: linear-gradient(180deg, #2b0838 0%, #170220 100%);
+  --theme-box-bg: rgba(30, 4, 38, 0.78);
+  --theme-bg-page: #fbf6f9;
+  --theme-bg-parchment: #ffffff;
+  --theme-bg-cream: #f4e8f1;
+  --theme-text-dark: #23092d;
+  --theme-text-muted: #5e4168;
+  --theme-border: #e0d0df;
+  --theme-card-border: rgba(223, 177, 91, 0.45);
+  --theme-shadow: 0 14px 40px rgba(52, 12, 66, 0.12);
+  --theme-shadow-glow: 0 0 35px rgba(223, 177, 91, 0.22);
+}
+
+/* THEME 4: Sheesh Mahal Midnight Peacock & Starlight Gold */
+[data-theme="navy"] {
+  --theme-name: "navy";
+  --theme-primary: #0b1a33;
+  --theme-primary-deep: #060e1d;
+  --theme-primary-light: #132b54;
+  --theme-accent: #197c72;
+  --theme-gold: #d4af37;
+  --theme-gold-light: #fff2b2;
+  --theme-gold-shimmer: #fff9d6;
+  --theme-gold-dark: #966311;
+  --theme-gold-gradient: linear-gradient(135deg, #d4af37 0%, #fff2a8 50%, #aa771c 100%);
+  --theme-primary-gradient: linear-gradient(135deg, #0b1a33 0%, #17386c 100%);
+  --theme-countdown-grad: linear-gradient(180deg, #0d2142 0%, #061122 100%);
+  --theme-box-bg: rgba(8, 20, 40, 0.75);
+  --theme-bg-page: #f4ecdc;
+  --theme-bg-parchment: #fdfaf4;
+  --theme-bg-cream: #f8f1e3;
+  --theme-text-dark: #111d30;
+  --theme-text-muted: #53627a;
+  --theme-border: #dfc79b;
+  --theme-card-border: rgba(212, 175, 55, 0.45);
+  --theme-shadow: 0 14px 40px rgba(11, 26, 51, 0.12);
+  --theme-shadow-glow: 0 0 35px rgba(212, 175, 55, 0.2);
+}
+
+/* ==========================================================================
+   GLOBAL BASE STYLING
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  background-color: var(--theme-bg-page);
+  color: var(--theme-text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 85%, rgba(10, 58, 40, 0.05) 0%, transparent 45%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.035' fill-rule='evenodd'%3E%3Cpath d='M30 30L15 15l15-15 15 15-15 15zm0 0l-15 15 15 15 15-15-15-15z'/%3E%3C/g%3E%3C/svg%3E");
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.gate-locked {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ==========================================================================
+   MINIMALIST FLOATING CONTROLS (Top Right)
+   ========================================================================== */
+.floating-controls {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.floating-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid var(--theme-gold);
+  color: var(--theme-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floating-btn:hover {
+  transform: translateY(-2px) scale(1.08);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  background: var(--theme-gold-shimmer);
+}
+
+.floating-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.floating-btn.active {
+  background: var(--theme-primary);
+  color: var(--theme-gold-light);
+  border-color: var(--theme-gold);
+}
+
+/* Sound Wave animation for playing audio */
+.music-btn {
+  position: relative;
+}
+
+.sound-waves {
+  position: absolute;
+  bottom: 6px;
+  display: none;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.music-btn.playing .sound-waves {
+  display: flex;
+}
+
+.sound-waves span {
+  width: 2.5px;
+  background: var(--theme-gold);
+  border-radius: 2px;
+  animation: soundBars 1s ease-in-out infinite alternate;
+}
+
+.sound-waves span:nth-child(1) { height: 4px; }
+.sound-waves span:nth-child(2) { height: 11px; animation-delay: 0.25s; }
+.sound-waves span:nth-child(3) { height: 6px; animation-delay: 0.15s; }
+
+@keyframes soundBars {
+  0% { height: 3px; }
+  100% { height: 12px; }
+}
+
+/* ==========================================================================
+   FLOATING ROYAL THEME SWITCHER WIDGET
+   ========================================================================== */
+.theme-switcher-widget {
+  position: fixed;
+  bottom: 82px;
+  right: 18px;
+  z-index: 9980;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.theme-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--theme-bg-parchment);
+  border: 1.5px solid var(--theme-gold);
+  border-radius: 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--theme-primary);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.theme-trigger-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.35);
+  background: var(--theme-gold-shimmer);
+}
+
+.theme-options-dropdown {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  background: var(--theme-bg-parchment);
+  border: 1.5px solid var(--theme-gold);
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 230px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.theme-switcher-widget.open .theme-options-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.theme-opt-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--theme-text-dark);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.theme-opt-btn:hover {
+  background: var(--theme-bg-cream);
+  border-color: var(--theme-gold);
+}
+
+.theme-opt-btn.active {
+  background: var(--theme-primary);
+  color: var(--theme-gold-light);
+  border-color: var(--theme-gold);
+}
+
+.theme-color-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  flex-shrink: 0;
+}
+
+.theme-color-dot.dot-emerald { background: #0a3a28; }
+.theme-color-dot.dot-sunrise { background: #851c2d; }
+.theme-color-dot.dot-wine { background: #340c42; }
+.theme-color-dot.dot-navy { background: #0b1a33; }
+
+/* ==========================================================================
+   MAIN INVITATION CONTAINER (Centered Mobile-First Scroll)
+   ========================================================================== */
+.invitation-main-flow {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 25px 16px 110px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Common Section Intro */
+.section-intro {
+  margin-bottom: 25px;
+}
+
+.royal-badge-pill {
+  display: inline-block;
+  padding: 4px 16px;
+  background: rgba(212, 175, 55, 0.14);
+  border: 1px solid var(--theme-gold);
+  border-radius: var(--radius-pill);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--theme-primary);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-gold-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+  color: var(--theme-primary);
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+.section-desc {
+  font-size: clamp(0.95rem, 3.5vw, 1.08rem);
+  color: var(--theme-text-muted);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   HERO SECTION: SACRED PARCHMENT & GROOM & BRIDE SHOWCASE
+   ========================================================================== */
+.royal-hero-section {
+  margin-bottom: 45px;
+}
+
+.royal-parchment-frame {
+  background: var(--theme-bg-parchment);
+  border-radius: var(--radius-lg);
+  padding: 38px 22px;
+  position: relative;
+  border: 2px solid var(--theme-border);
+  box-shadow: var(--theme-shadow), var(--theme-shadow-glow);
+  transition: all 0.3s ease;
+}
+
+.royal-parchment-frame::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed rgba(212, 175, 55, 0.45);
+  border-radius: calc(var(--radius-lg) - 6px);
+  pointer-events: none;
+}
+
+/* Sacred Aura Header */
+.sacred-aura-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.ganesha-emblem-wrap {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 12px;
+}
+
+.ganesha-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+}
+
+.shloka-title {
+  font-family: 'Rozha One', 'Tiro Devanagari Hindi', serif;
+  font-size: clamp(1.3rem, 4.5vw, 1.6rem);
+  color: var(--theme-primary);
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+
+.shloka-mantra {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: clamp(1rem, 3.8vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--theme-primary);
+  font-weight: 600;
+  max-width: 490px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+.mandala-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 14px 0 0;
+}
+
+.m-line {
+  height: 1px;
+  width: 50px;
+  background: linear-gradient(to right, transparent, var(--theme-gold));
+}
+
+.m-line:last-child {
+  background: linear-gradient(to left, transparent, var(--theme-gold));
+}
+
+.m-diamond {
+  font-size: 0.85rem;
+  color: var(--theme-gold-dark);
+}
+
+.royal-invite-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 3.8vw, 1.2rem);
+  color: var(--theme-text-muted);
+  text-align: center;
+  max-width: 520px;
+  margin: 18px auto 22px;
+  line-height: 1.5;
+}
+
+/* Couple Typography */
+.couple-spotlight {
+  text-align: center;
+  margin: 20px 0 25px;
+}
+
+.groom-title, .bride-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3.2rem, 11vw, 4.6rem);
+  color: var(--theme-primary);
+  line-height: 1.15;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.grandparent-line {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.78rem, 2.5vw, 0.86rem);
+  font-weight: 500;
+  color: var(--theme-gold-dark);
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.lineage-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.85rem, 2.7vw, 0.94rem);
+  font-weight: 600;
+  color: var(--theme-text-dark);
+  letter-spacing: 0.3px;
+  margin-top: 2px;
+  opacity: 0.9;
+}
+
+.royal-knot {
+  margin: 12px 0;
+}
+
+.knot-ampersand {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.8rem;
+  color: var(--theme-gold-dark);
+}
+
+/* Muhurat Highlight Box */
+.muhurat-badge-card {
+  background: var(--theme-bg-cream);
+  border: 1.5px solid var(--theme-gold);
+  border-radius: var(--radius-md);
+  padding: 18px 14px;
+  margin-top: 24px;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+}
+
+.muhurat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.muhurat-item {
+  flex: 1;
+}
+
+.muhurat-item.m-center {
+  border-left: 1px solid rgba(212, 175, 55, 0.5);
+  border-right: 1px solid rgba(212, 175, 55, 0.5);
+  padding: 0 8px;
+}
+
+.m-label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--theme-gold-dark);
+  letter-spacing: 1px;
+}
+
+.m-val {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.95rem, 3.2vw, 1.1rem);
+  color: var(--theme-primary);
+  font-weight: 700;
+}
+
+.m-date-digit {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 7vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--theme-primary);
+}
+
+.muhurat-sub-venue {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(0.72rem, 2.5vw, 0.82rem);
+  color: var(--theme-primary);
+  text-align: center;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(212, 175, 55, 0.4);
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   INTERACTIVE SCRATCH-TO-REVEAL SECTION
+   ========================================================================== */
+.royal-scratch-section {
+  margin-bottom: 50px;
+}
+
+.scratch-grand-card {
+  background: var(--theme-bg-parchment);
+  border-radius: var(--radius-lg);
+  padding: 30px 18px;
+  border: 1.5px solid var(--theme-gold);
+  box-shadow: var(--theme-shadow);
+}
+
+.scratch-container {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 185px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: 18px auto 16px;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.12);
+}
+
+.scratch-secret-content {
+  position: absolute;
+  inset: 0;
+  background: var(--theme-bg-cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border: 2px dashed var(--theme-gold);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.secret-badge {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: var(--theme-gold-dark);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.secret-date {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 4.5vw, 1.65rem);
+  font-weight: 700;
+  color: var(--theme-primary);
+  margin-bottom: 3px;
+}
+
+.secret-time {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.85rem, 2.8vw, 0.95rem);
+  font-weight: 600;
+  color: var(--theme-primary);
+  opacity: 0.9;
+}
+
+.secret-nakshatra {
+  font-family: 'Rozha One', 'Tiro Devanagari Hindi', serif;
+  font-size: clamp(0.82rem, 2.7vw, 0.92rem);
+  color: var(--theme-accent);
+  margin-top: 5px;
+}
+
+#scratchCanvas {
+  position: absolute;
+  inset: 0;
+  cursor: crosshair;
+  z-index: 2;
+  touch-action: none;
+}
+
+.scratch-buttons-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-royal-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: var(--theme-bg-cream);
+  color: var(--theme-primary);
+  border: 1px solid var(--theme-gold);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.25s ease;
+  min-height: 42px;
+}
+
+.btn-royal-action:hover, .btn-royal-action:active {
+  background: var(--theme-primary);
+  color: var(--theme-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.scratch-success-badge {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.4s ease;
+  color: var(--theme-accent);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.scratch-success-badge.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   LIVE ROYAL COUNTDOWN (Heirloom Jewel Edition)
+   ========================================================================== */
+.royal-countdown-section {
+  margin-bottom: 50px;
+}
+
+.countdown-grand-wrapper {
+  background: var(--theme-countdown-grad);
+  border: 2px solid var(--theme-gold);
+  border-radius: var(--radius-lg);
+  padding: 35px 16px;
+  color: #ffffff;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.countdown-top-tag {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--theme-gold-light);
+  margin-bottom: 6px;
+}
+
+.countdown-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 5vw, 1.9rem);
+  color: #ffffff;
+  margin-bottom: 22px;
+}
+
+.countdown-timer-boxes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.cd-box {
+  background: var(--theme-box-bg);
+  border: 1.5px solid var(--theme-gold);
+  border-radius: var(--radius-sm);
+  padding: 12px 6px;
+  flex: 1;
+  min-width: 62px;
+  text-align: center;
+  box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.cd-value {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, 5.5vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--theme-gold-light);
+  text-shadow: 0 2px 8px rgba(212, 175, 55, 0.5);
+}
+
+.cd-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.62rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #e6edd8;
+  margin-top: 4px;
+}
+
+.cd-divider-colon {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--theme-gold);
+  opacity: 0.75;
+}
+
+.cd-celebration-text {
+  margin-top: 20px;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(0.75rem, 2.6vw, 0.88rem);
+  letter-spacing: 1px;
+  color: var(--theme-gold-light);
+}
+
+/* ==========================================================================
+   FESTIVITIES CARDS (Groom's Cultural Vectors)
+   ========================================================================== */
+.festivities-section {
+  margin-bottom: 50px;
+}
+
+.events-cultural-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cultural-event-card {
+  background: var(--theme-bg-parchment);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  border: 1.5px solid var(--theme-border);
+  box-shadow: var(--theme-shadow);
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.cultural-event-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--theme-gold);
+}
+
+.event-icon-circle {
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-icon-circle svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+}
+
+.event-details-wrap {
+  flex: 1;
+}
+
+.event-day-pill {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--theme-primary);
+  background: rgba(10, 58, 40, 0.08);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 6px;
+}
+
+.event-day-pill.vivah-pill {
+  background: var(--theme-primary);
+  color: var(--theme-gold-light);
+}
+
+.event-name-head {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.25rem, 4vw, 1.55rem);
+  color: var(--theme-primary);
+  margin-bottom: 4px;
+}
+
+.event-time-badge {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--theme-gold-dark);
+  margin-bottom: 8px;
+}
+
+.event-desc-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  color: var(--theme-text-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.event-location-note {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  color: var(--theme-text-dark);
+  background: var(--theme-bg-cream);
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--theme-gold);
+  margin-bottom: 14px;
+}
+
+.event-actions-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.grand-vivah-card {
+  border: 2px solid var(--theme-gold);
+  background: var(--theme-bg-parchment);
+}
+
+/* ==========================================================================
+   VENUE SECTION
+   ========================================================================== */
+.venues-section {
+  margin-bottom: 50px;
+}
+
+.venue-card-box {
+  background: var(--theme-bg-parchment);
+  border-radius: var(--radius-lg);
+  padding: 30px 22px;
+  border: 2px solid var(--theme-gold);
+  box-shadow: var(--theme-shadow);
+  text-align: center;
+}
+
+.venue-crest {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.venue-type-tag {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: var(--theme-gold-dark);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.venue-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 5vw, 1.85rem);
+  color: var(--theme-primary);
+  margin: 6px 0 10px;
+}
+
+.venue-lines {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: var(--theme-text-dark);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+.venue-ceremonies-tag {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--theme-primary);
+  background: var(--theme-bg-cream);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  margin-bottom: 22px;
+  border: 1px dashed var(--theme-gold);
+}
+
+.venue-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-venue-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 20px;
+  background: var(--theme-primary-gradient);
+  color: var(--theme-gold-light);
+  border-radius: var(--radius-pill);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 1px solid var(--theme-gold);
+  min-height: 44px;
+}
+
+.btn-venue-nav svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.btn-copy-address {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  background: var(--theme-bg-cream);
+  color: var(--theme-primary);
+  border: 1px solid var(--theme-border);
+  border-radius: var(--radius-pill);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-height: 44px;
+  transition: all 0.25s ease;
+}
+
+.btn-copy-address:hover, .btn-copy-address:active {
+  background: var(--theme-gold);
+  color: #0b1a33;
+}
+
+/* ==========================================================================
+   ROYAL RSVP & HELPLINE PLATE
+   ========================================================================== */
+.royal-rsvp-helpline-section {
+  margin-bottom: 35px;
+}
+
+.rsvp-royal-plate {
+  background: var(--theme-bg-parchment);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--theme-gold);
+  box-shadow: var(--theme-shadow);
+  padding: 35px 20px;
+}
+
+.plate-ganesha {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 10px;
+}
+
+.rsvp-plate-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.8rem, 8vw, 3.4rem);
+  color: var(--theme-primary);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hosts-family-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.host-family-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+.host-family-role {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--theme-gold-dark);
+  margin-bottom: 4px;
+}
+
+.host-family-names {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: var(--theme-primary);
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.host-family-divider {
+  font-size: 1.3rem;
+  color: var(--theme-gold);
+}
+
+.rsvp-contacts-badge {
+  background: var(--theme-bg-cream);
+  border: 1px dashed var(--theme-gold);
+  border-radius: var(--radius-md);
+  padding: 20px 14px;
+}
+
+.rsvp-tag-text {
+  display: block;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  color: var(--theme-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.helpline-direct-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-whatsapp-direct {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #25d366;
+  color: #ffffff;
+  border-radius: var(--radius-pill);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+  transition: all 0.25s ease;
+  min-height: 44px;
+}
+
+.btn-whatsapp-direct:hover, .btn-whatsapp-direct:active {
+  background: #1eb857;
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp-direct svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   STICKY BOTTOM WHATSAPP SHARING BAR (Mobile First)
+   ========================================================================== */
+.sticky-share-bar {
+  position: fixed;
+  bottom: 0;
+  inset-x: 0;
+  z-index: 980;
+  background: rgba(10, 35, 23, 0.96);
+  backdrop-filter: blur(12px);
+  border-top: 1.5px solid var(--theme-gold);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="sunrise"] .sticky-share-bar {
+  background: rgba(70, 9, 18, 0.96);
+}
+
+[data-theme="wine"] .sticky-share-bar {
+  background: rgba(35, 7, 46, 0.96);
+}
+
+[data-theme="navy"] .sticky-share-bar {
+  background: rgba(11, 26, 51, 0.96);
+}
+
+.sticky-share-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--theme-gold-light);
+}
+
+.sticky-couple-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.sticky-share-desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  color: #e0eedf;
+}
+
+.btn-share-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: #25d366;
+  color: #ffffff;
+  border-radius: var(--radius-pill);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  transition: all 0.25s ease;
+  min-height: 40px;
+}
+
+.btn-share-whatsapp svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   ROYAL FOOTER
+   ========================================================================== */
+.royal-footer {
+  background: var(--theme-primary-gradient);
+  color: #f7ecd9;
+  padding: 45px 16px 85px;
+  text-align: center;
+  border-top: 2px solid var(--theme-gold);
+}
+
+.footer-ganesha-badge {
+  font-size: 2.2rem;
+  color: var(--theme-gold);
+  margin-bottom: 8px;
+}
+
+.footer-couple-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.4rem, 7vw, 3rem);
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.footer-sub {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  color: var(--theme-gold-light);
+  margin-bottom: 18px;
+}
+
+.footer-credits {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  color: #e2f0e0;
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .cultural-event-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .event-actions-row {
+    justify-content: center;
+  }
+  .muhurat-row {
+    gap: 4px;
+  }
+  .theme-switcher-widget {
+    bottom: 74px;
+    right: 12px;
+  }
+}

@@ -1,0 +1,399 @@
+/* ==========================================================================
+   IMPERIAL ROYAL PALACE GATE (Groom's Invitation - Ashish & Shivangi)
+   Theme: Hand-carved Makrana Ivory, 24K Kundan Gold Lattice & Auspicious Toran
+   Fully Adaptive to Active Theme (Emerald, Sunrise, Wine, Midnight)
+   ========================================================================== */
+
+:root {
+  --gate-ambient-glow: radial-gradient(circle at 50% 40%, rgba(255, 235, 160, 0.28) 0%, rgba(10, 58, 40, 0.92) 65%, #052116 100%);
+  --gate-door-grad: linear-gradient(180deg, #093322 0%, #124e36 50%, #062418 100%);
+  --gate-door-shadow: rgba(4, 25, 17, 0.85);
+  --gate-card-bg: rgba(6, 33, 22, 0.93);
+  --gate-accent-glow: rgba(212, 175, 55, 0.45);
+}
+
+[data-theme="sunrise"] {
+  --gate-ambient-glow: radial-gradient(circle at 50% 40%, rgba(255, 215, 160, 0.35) 0%, rgba(138, 30, 45, 0.9) 65%, #460912 100%);
+  --gate-door-grad: linear-gradient(180deg, #6c121e 0%, #8f1e2f 50%, #4f0b15 100%);
+  --gate-door-shadow: rgba(30, 4, 7, 0.85);
+  --gate-card-bg: rgba(70, 9, 18, 0.93);
+  --gate-accent-glow: rgba(230, 126, 34, 0.45);
+}
+
+[data-theme="wine"] {
+  --gate-ambient-glow: radial-gradient(circle at 50% 40%, rgba(255, 220, 180, 0.3) 0%, rgba(51, 11, 66, 0.92) 65%, #1c0326 100%);
+  --gate-door-grad: linear-gradient(180deg, #2b0838 0%, #48125c 50%, #1e0527 100%);
+  --gate-door-shadow: rgba(18, 3, 24, 0.85);
+  --gate-card-bg: rgba(35, 7, 46, 0.93);
+  --gate-accent-glow: rgba(223, 177, 91, 0.45);
+}
+
+[data-theme="navy"] {
+  --gate-ambient-glow: radial-gradient(circle at 50% 40%, rgba(212, 175, 55, 0.25) 0%, rgba(14, 32, 63, 0.95) 65%, #060e1d 100%);
+  --gate-door-grad: linear-gradient(180deg, #09152b 0%, #11284d 50%, #09152b 100%);
+  --gate-door-shadow: rgba(0, 0, 0, 0.85);
+  --gate-card-bg: rgba(11, 25, 49, 0.93);
+  --gate-accent-glow: rgba(212, 175, 55, 0.35);
+}
+
+.gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gate-ambient-glow);
+  perspective: 1600px;
+  overflow: hidden;
+  transition: opacity 1.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gate-overlay.opened {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Palace Marble Arch Frame */
+.gate-arch-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.92);
+  border: 14px solid #d4af37;
+  border-image: linear-gradient(135deg, #d4af37 0%, #fff7ce 30%, #a27218 60%, #faebb1 100%) 1;
+}
+
+/* Palace Gate Doors Container */
+.gate-doors {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+/* Left & Right Palace Gates */
+.gate-door {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  background: 
+    var(--gate-door-grad),
+    radial-gradient(circle at center, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+  border: 4px solid #c59b27;
+  box-shadow: inset 0 0 70px var(--gate-door-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 35px 20px;
+  transition: transform 1.8s cubic-bezier(0.65, 0, 0.15, 1);
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.gate-door-left {
+  transform-origin: left center;
+  border-right: 2.5px solid #faebb1;
+}
+
+.gate-door-right {
+  transform-origin: right center;
+  border-left: 2.5px solid #faebb1;
+}
+
+/* 3D Gate Opening Transforms */
+.gate-overlay.opened .gate-door-left {
+  transform: rotateY(-112deg) translateZ(10px);
+}
+
+.gate-overlay.opened .gate-door-right {
+  transform: rotateY(112deg) translateZ(10px);
+}
+
+/* Ornate Kundan Gold Lattice Jaali Work */
+.door-lattice-pattern {
+  position: absolute;
+  inset: 15px;
+  background-image: 
+    repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.15) 0, rgba(212, 175, 55, 0.15) 1.5px, transparent 0, transparent 18px),
+    repeating-linear-gradient(-45deg, rgba(212, 175, 55, 0.15) 0, rgba(212, 175, 55, 0.15) 1.5px, transparent 0, transparent 18px);
+  border: 2px solid rgba(212, 175, 55, 0.55);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.door-lattice-pattern::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed rgba(255, 235, 160, 0.45);
+  border-radius: 6px;
+}
+
+/* Decorative Rajput Arch Silhouette on Door */
+.door-arch-crest {
+  width: 90px;
+  height: 90px;
+  margin: 10px auto 0;
+  opacity: 0.4;
+  filter: drop-shadow(0 0 10px #d4af37);
+  pointer-events: none;
+}
+
+/* Door Antique Gold Lion Head / Ring Knocker */
+.gate-handle {
+  position: absolute;
+  top: 50%;
+  width: 65px;
+  height: 65px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+}
+
+.gate-door-left .gate-handle {
+  right: 18px;
+}
+
+.gate-door-right .gate-handle {
+  left: 18px;
+}
+
+.brass-plate {
+  width: 56px;
+  height: 56px;
+  background: radial-gradient(circle, #fff3b8 0%, #d4af37 60%, #684606 100%);
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7), inset 0 2px 5px #fff;
+  border: 2px solid #5a3c08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brass-ring {
+  width: 32px;
+  height: 44px;
+  border: 4.5px solid #d4af37;
+  border-radius: 50%;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
+  transform-origin: top center;
+  animation: ringSwing 3s ease-in-out infinite;
+}
+
+@keyframes ringSwing {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(5deg); }
+}
+
+/* Floating Center Seal & Royal Invitation Card */
+.gate-center-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: #fff;
+  max-width: 440px;
+  width: 90%;
+  padding: 35px 24px;
+  background: var(--gate-card-bg);
+  backdrop-filter: blur(16px);
+  border: 2px solid #d4af37;
+  border-radius: 24px;
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.88), 0 0 50px var(--gate-accent-glow);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.gate-overlay.opened .gate-center-content {
+  transform: scale(0.65);
+  opacity: 0;
+}
+
+.gate-ganesha-badge {
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 14px;
+  background: radial-gradient(circle, #fff6cb 0%, #d4af37 60%, #855310 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.55), inset 0 0 10px rgba(255,255,255,0.75);
+  border: 2px solid #fff5cc;
+}
+
+.gate-ganesha-badge svg {
+  width: 46px;
+  height: 46px;
+  fill: #0c1b33;
+}
+
+.gate-shloka {
+  font-family: 'Rozha One', 'Tiro Devanagari Hindi', serif;
+  font-size: 1.25rem;
+  color: #ffd978;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.gate-welcome {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.82rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #f1ebd8;
+  margin-bottom: 8px;
+}
+
+.gate-couple-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.6rem, 8.5vw, 3.4rem);
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 14px rgba(212, 175, 55, 0.7);
+}
+
+.gate-couple-title span {
+  display: inline-block;
+  color: #ffd700;
+  font-size: 1.9rem;
+  margin: 0 6px;
+  font-family: 'Playfair Display', serif;
+}
+
+.gate-date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid #d4af37;
+  border-radius: 30px;
+  color: #faebb6;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.82rem;
+  letter-spacing: 1.5px;
+  margin: 14px 0 22px;
+}
+
+/* Royal Pulse Open Button */
+.btn-open-gate {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 15px 32px;
+  background: linear-gradient(135deg, #d4af37 0%, #fff2a8 50%, #aa771c 100%);
+  color: #0b1a33;
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.55), inset 0 1px 2px #fff;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  min-height: 52px;
+  overflow: hidden;
+}
+
+.btn-open-gate::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: rotate(45deg) translateY(-100%);
+  animation: shineButton 3.5s infinite;
+}
+
+@keyframes shineButton {
+  0% { transform: rotate(45deg) translateY(-100%); }
+  35%, 100% { transform: rotate(45deg) translateY(100%); }
+}
+
+.btn-open-gate:hover, .btn-open-gate:active {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.8);
+}
+
+.btn-open-gate svg {
+  width: 18px;
+  height: 18px;
+  fill: #0b1a33;
+}
+
+.gate-subtext {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: #e5dac2;
+  letter-spacing: 1px;
+}
+
+/* Hanging Torans / Golden Lamps & Marigold Garland */
+.gate-toran {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.toran-bell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: swingBell 3.5s ease-in-out infinite alternate;
+  transform-origin: top center;
+}
+
+.toran-bell:nth-child(2) { animation-delay: 0.4s; }
+.toran-bell:nth-child(3) { animation-delay: 0.8s; }
+.toran-bell:nth-child(4) { animation-delay: 0.6s; }
+
+.bell-string {
+  width: 2px;
+  height: 32px;
+  background: linear-gradient(to bottom, #d4af37, #80570b);
+}
+
+.bell-icon {
+  width: 22px;
+  height: 24px;
+  fill: #f6e27a;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6));
+}
+
+@keyframes swingBell {
+  0% { transform: rotate(-8deg); }
+  100% { transform: rotate(8deg); }
+}
+
+@media (max-width: 600px) {
+  .gate-center-content {
+    padding: 26px 18px;
+    width: 92%;
+  }
+  .gate-couple-title {
+    font-size: 2.3rem;
+  }
+  .btn-open-gate {
+    padding: 13px 24px;
+    font-size: 0.88rem;
+  }
+}
